@@ -77,3 +77,6 @@ class MyViewController: UIViewController {
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
+## Acknowledgments
+
+* [Matt Gallagher](https://github.com/mattgallagher) for his beautiful [CwlUtils](https://github.com/mattgallagher/CwlUtils)
