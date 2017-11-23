@@ -41,7 +41,7 @@ $ pod install
 
 #### Manually
 
-If you prefer not to use either of the aforementioned dependency managers, you can integrate Pooling into your project manually by copying `Pooling.swift`, `Poolable.swift`, `Pool.swift` and `PThreadMutex.swift` source files to your project.
+If you prefer not to use either of the aforementioned dependency managers, you can integrate Pooling into your project manually by copying [Pooling.swift](/src/Pooling.swift), `Poolable.swift`, `Pool.swift` and `PThreadMutex.swift` source files to your project.
 
 ## Deployment
 
@@ -75,5 +75,5 @@ class MyViewController: UIViewController {
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
