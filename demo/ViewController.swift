@@ -8,23 +8,11 @@
 
 import UIKit
 
-class PoolableLabel: UILabel, Poolable {
-    required init<T>(pool: T) where T : Pooling {
-        super.init(frame: CGRect.zero)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-class PoolableLabel1: PoolableLabel {
-    
-}
-
 class ViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
-    private var pool = Pool(size: 50, type: PoolableLabel1.self)
+    private var pool = Pool(size: 50) {
+        return UILabel()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

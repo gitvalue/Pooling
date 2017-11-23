@@ -26,9 +26,9 @@ import UIKit
  - author: gitvalue
  */
 public protocol Pooling {
-    associatedtype T: Poolable
+    associatedtype T
     
-    init(size: Int, type: T.Type)
+    init(size: Int, creator: @escaping () -> T)
     
     /**
      Gets object from pool

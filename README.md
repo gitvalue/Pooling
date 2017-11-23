@@ -41,7 +41,7 @@ $ pod install
 
 #### Manually
 
-If you prefer not to use either of the aforementioned dependency managers, you can integrate Pooling into your project manually by copying [Pooling.swift](/src/Pooling.swift), [Poolable.swift](/src/Poolable.swift), [Pool.swift](/src/Pool.swift) and [PThreadMutex.swift](/src/PThreadMutex.swift) source files to your project.
+If you prefer not to use either of the aforementioned dependency managers, you can integrate Pooling into your project manually by copying [Pooling.swift](/src/Pooling.swift), [Pool.swift](/src/Pool.swift) and [PThreadMutex.swift](/src/PThreadMutex.swift) source files to your project.
 
 ## Deployment
 
@@ -51,35 +51,30 @@ If you prefer not to use either of the aforementioned dependency managers, you c
 import UIKit
 import Pooling
 
-// First you have to choose a type you want to put in the pool
-// To make your custom class poolable, use inheritance from Poolable protocol
-class PoolableView: UIView, Poolable {
-    required init<T>(pool: T) where T : Pooling {
-        super.init(frame: CGRect.zero)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
 
 class MyViewController: UIViewController {
-    // You can declare Pool three ways:
-    // 1. Explicitily defining Poolable type as a generic type
-    // 2. Implicitly defining Poolable type as an argument
-    // 3. Defining parent class as a generic type and a concrete inheriting type as an argument. This you may need to put several pools into map, for example.
-    private var pool1 = Pool<PoolableView>(size: 50)
-    private var pool2 = Pool(size: 50, type: PoolableView.self)
-    // private var pool3 = Pool<PoolableView>(size: 50, type: PoolableViewChild.self)
+    private var pool = Pool(size: 50, creator: { return UILabel(frame: CGRect.zero) })
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // And now you ready to create your views
-        let pooledView = pool1.borrow()
+        let label = pool.borrow()
     }
 }
 
+```
+
+## Notes
+
+Pool uses a closure for creating objects, so in general case you should return object created with a designated initializer. It's specifically important when using subclasses:
+
+```Swift
+func createPool(forViewsOf type: UIView.Type) -> Pool<UIView> {
+    return Pool<UIView>(size: 50) {
+        return type.init(frame: CGRect.zero)
+    }
+}
 ``` 
 
 ## Authors

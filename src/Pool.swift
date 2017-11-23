@@ -25,7 +25,7 @@ import Foundation
  
  - author: gitvalue
  */
-public class Pool<U>: Pooling where U: Poolable {    
+public class Pool<U>: Pooling {
     public typealias T = U
     
     /**
@@ -39,22 +39,22 @@ public class Pool<U>: Pooling where U: Poolable {
     private var pool: [T]!
     
     /**
-     Objects 'creator' type
+     Objects 'creator' closure
      */
-    private var creatorType: T.Type
+    private var creator: (() -> U)!
     
-    required public init(size: Int, type: T.Type = T.self) {
+    required public init(size: Int, creator: @escaping () -> U) {
         pool = []
-        creatorType = type
+        self.creator = creator
         
         for _ in 0..<size {
-            pool.append(creatorType.init(pool: self))
+            pool.append(creator())
         }
     }
     
     public func borrow() -> U {
         return mutex.sync {
-            return (0 < pool.count ? pool.popLast() : creatorType.init(pool: self))!
+            return (0 < pool.count ? pool.popLast() : creator())!
         }
     }
 

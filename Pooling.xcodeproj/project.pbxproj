@@ -13,11 +13,9 @@
 		0A0345F01FC5976500C05B6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A0345EF1FC5976500C05B6B /* Assets.xcassets */; };
 		0A0345F31FC5976500C05B6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A0345F11FC5976500C05B6B /* LaunchScreen.storyboard */; };
 		0A57FA301FC6C625003AF844 /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0346071FC5989000C05B6B /* Pool.swift */; };
-		0A57FA311FC6C625003AF844 /* Poolable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0346081FC5989000C05B6B /* Poolable.swift */; };
 		0A57FA321FC6C625003AF844 /* Pooling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0346091FC5989000C05B6B /* Pooling.swift */; };
 		0A57FA331FC6C625003AF844 /* PThreadMutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03460A1FC5989000C05B6B /* PThreadMutex.swift */; };
 		0A57FA381FC6CB4E003AF844 /* Pool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0346071FC5989000C05B6B /* Pool.swift */; };
-		0A57FA391FC6CB4E003AF844 /* Poolable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0346081FC5989000C05B6B /* Poolable.swift */; };
 		0A57FA3A1FC6CB4E003AF844 /* Pooling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0346091FC5989000C05B6B /* Pooling.swift */; };
 		0A57FA3B1FC6CB4E003AF844 /* PThreadMutex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03460A1FC5989000C05B6B /* PThreadMutex.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +29,6 @@
 		0A0345F21FC5976500C05B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A0345F41FC5976500C05B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A0346071FC5989000C05B6B /* Pool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pool.swift; sourceTree = "<group>"; };
-		0A0346081FC5989000C05B6B /* Poolable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Poolable.swift; sourceTree = "<group>"; };
 		0A0346091FC5989000C05B6B /* Pooling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pooling.swift; sourceTree = "<group>"; };
 		0A03460A1FC5989000C05B6B /* PThreadMutex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PThreadMutex.swift; sourceTree = "<group>"; };
 		0AC6484D1FC596D000924964 /* Pooling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pooling.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				0A0346071FC5989000C05B6B /* Pool.swift */,
-				0A0346081FC5989000C05B6B /* Poolable.swift */,
 				0A0346091FC5989000C05B6B /* Pooling.swift */,
 				0A03460A1FC5989000C05B6B /* PThreadMutex.swift */,
 			);
@@ -203,7 +199,6 @@
 				0A0345EB1FC5976500C05B6B /* ViewController.swift in Sources */,
 				0A57FA3B1FC6CB4E003AF844 /* PThreadMutex.swift in Sources */,
 				0A0345E91FC5976500C05B6B /* AppDelegate.swift in Sources */,
-				0A57FA391FC6CB4E003AF844 /* Poolable.swift in Sources */,
 				0A57FA3A1FC6CB4E003AF844 /* Pooling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,7 +209,6 @@
 			files = (
 				0A57FA331FC6C625003AF844 /* PThreadMutex.swift in Sources */,
 				0A57FA301FC6C625003AF844 /* Pool.swift in Sources */,
-				0A57FA311FC6C625003AF844 /* Poolable.swift in Sources */,
 				0A57FA321FC6C625003AF844 /* Pooling.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
