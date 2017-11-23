@@ -51,22 +51,35 @@ If you prefer not to use either of the aforementioned dependency managers, you c
 import UIKit
 import Pooling
 
-extension UIView: Poolable {
-    static func create() -> UIView {
-        return UIView()
+// First you have to choose a type you want to put in the pool
+// To make your custom class poolable, use inheritance from Poolable protocol
+class PoolableView: UIView, Poolable {
+    required init<T>(pool: T) where T : Pooling {
+        super.init(frame: CGRect.zero)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
 class MyViewController: UIViewController {
-    private var pool = Pool<UIView>(size: 50)
+    // You can declare Pool three ways:
+    // 1. Explicitily defining Poolable type as a generic type
+    // 2. Implicitly defining Poolable type as an argument
+    // 3. Defining parent class as a generic type and a concrete inheriting type as an argument. This you may need to put several pools into map, for example.
+    private var pool1 = Pool<PoolableView>(size: 50)
+    private var pool2 = Pool(size: 50, type: PoolableView.self)
+    // private var pool3 = Pool<PoolableView>(size: 50, type: PoolableViewChild.self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let pooledView = pool.borrow()
-        view.addSubview(pooledView)
+        // And now you ready to create your views
+        let pooledView = pool1.borrow()
     }
 }
+
 ``` 
 
 ## Authors
