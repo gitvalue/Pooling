@@ -25,9 +25,6 @@ import Foundation
  
  - author: gitvalue
  */
-public protocol Poolable {
-    /**
-     Creates class instance in way it's gonna be hold in pool
-     */
-    static func create() -> Self
+public protocol Poolable: class {
+    init<T: Pooling>(pool: T)
 }
