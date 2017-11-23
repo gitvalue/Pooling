@@ -18,9 +18,13 @@ class PoolableLabel: UILabel, Poolable {
     }
 }
 
+class PoolableLabel1: PoolableLabel {
+    
+}
+
 class ViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
-    private var pool = Pool<PoolableLabel>(size: 50)
+    private var pool = Pool(size: 50, type: PoolableLabel1.self)
     
     override func viewDidLoad() {
         super.viewDidLoad()

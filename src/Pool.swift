@@ -38,17 +38,23 @@ public class Pool<U>: Pooling where U: Poolable {
      */
     private var pool: [T]!
     
-    required public init(size: Int) {
+    /**
+     Objects 'creator' type
+     */
+    private var creatorType: T.Type
+    
+    required public init(size: Int, type: T.Type = T.self) {
         pool = []
+        creatorType = type
         
         for _ in 0..<size {
-            pool.append(U(pool: self))
+            pool.append(creatorType.init(pool: self))
         }
     }
     
     public func borrow() -> U {
         return mutex.sync {
-            return (0 < pool.count ? pool.popLast() : U(pool: self))!
+            return (0 < pool.count ? pool.popLast() : creatorType.init(pool: self))!
         }
     }
 

@@ -28,7 +28,7 @@ import UIKit
 public protocol Pooling {
     associatedtype T: Poolable
     
-    init(size: Int)
+    init(size: Int, type: T.Type)
     
     /**
      Gets object from pool
