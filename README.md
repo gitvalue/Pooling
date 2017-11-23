@@ -1,9 +1,9 @@
 # Pooling
-Pooling is an interface for classes that implement object pool design pattern
+Pooling is an interface for classes that implement [object pool design pattern](https://en.wikipedia.org/wiki/Object_pool_pattern)
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#Deployment) for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
