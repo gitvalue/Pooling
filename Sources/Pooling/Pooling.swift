@@ -18,7 +18,7 @@
 //  IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 //
 
-import UIKit
+import Foundation
 
 /**
  Provides an interface for classes that intent to function as a pool
