@@ -39,6 +39,38 @@ Then, run the following command:
 $ pod install
 ```
 
+#### Swift Package Manager
+
+All you need is to define Pooling dependency in your package manifest file:
+
+```Swift
+import PackageDescription
+
+let package = Package(
+    name: "YourPackageName",
+    products: [
+        .library(name: "YourPackageName", targets: ["YourPackageName"]),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/gitvalue/Pooling.git", from: "1.0.0"),
+    ],
+    targets: [
+        .target(
+            name: "YourPackageName",
+            dependencies: ["Pooling"]),
+        .testTarget(
+            name: "YourPackageNameTests",
+            dependencies: ["Pooling"]),
+    ]
+)
+```
+
+and then run
+
+```bash
+$ swift fetch
+```
+
 #### Manually
 
 If you prefer not to use either of the aforementioned dependency managers, you can integrate Pooling into your project manually by copying [Pooling.swift](/src/Pooling.swift), [Pool.swift](/src/Pool.swift) and [PThreadMutex.swift](/src/PThreadMutex.swift) source files to your project.
@@ -76,6 +108,10 @@ func createPool(forViewsOf type: UIView.Type) -> Pool<UIView> {
     }
 }
 ``` 
+
+## Versioning
+
+This repo uses [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/gitvalue/Pooling/tags). 
 
 ## Authors
 
