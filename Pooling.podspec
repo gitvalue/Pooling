@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Pooling"
-  s.version      = "0.0.6"
+  s.version      = "0.0.7"
   s.summary      = "Pooling is an interface to create pools"
 
   # This description is used to generate tags and improve search results.
@@ -91,7 +91,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "src", "src/**/*.{swift}"
+  s.source_files  = "Sources", "Sources/**/*.{swift}"
   #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
