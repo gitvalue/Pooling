@@ -41,6 +41,8 @@ $ pod install
 
 #### Swift Package Manager
 
+**Note:** At this time there is [no _official_ support for iOS targets or the related system libraries](https://github.com/apple/swift-package-manager/blob/master/Documentation/Usage.md#depending-on-apple-modules) in SPM. So read [this](https://github.com/j-channings/swift-package-manager-ios) before processing.
+
 All you need is to define Pooling dependency in your package manifest file:
 
 ```Swift
@@ -70,6 +72,27 @@ and then run
 ```bash
 $ swift fetch
 ```
+
+#### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate SnapKit into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "https://github.com/gitvalue/Pooling" ~> 1.0.0
+```
+
+Run `carthage update` to build the framework and drag the built `Pooling.framework` into your Xcode project.
+
+For more information read [this](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application)
 
 #### Manually
 

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Pooling"
-  s.version      = "0.0.7"
+  s.version      = "1.0.0"
   s.summary      = "Pooling is an interface to create pools"
 
   # This description is used to generate tags and improve search results.
