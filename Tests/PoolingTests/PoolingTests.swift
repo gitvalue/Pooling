@@ -2,38 +2,57 @@ import XCTest
 @testable import Pooling
 
 class PoolingTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-//        XCTAssertEqual(Pooling().text, "Hello, World!")
+    var initiallyEmptyPool: Pool<Int>!
+    var initiallyFullPool: Pool<Int>!
+    
+    override func setUp() {
+        super.setUp()
         
-        let defaultInt = 0
+        initiallyEmptyPool = Pool<Int>(size: 0, creator: { return 1 })
+        initiallyFullPool = Pool<Int>(size: 50, creator: { return 2 })
+    }
+    
+    override func tearDown() {
+        initiallyEmptyPool = nil
+        initiallyFullPool = nil
         
-        let pool = Pool<Int>(size: 50) {
-            return defaultInt
+        super.tearDown()
+    }
+    
+    func testIfRecallIsWorkingCorrectly() {
+        // 1. given
+        let ints = [ 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 ]
+        
+        // 2. when
+        for int in ints {
+            initiallyEmptyPool.recall(int)
         }
         
-        var values: [Int] = []
-        
-        for i in 1..<51 {
-            var value = pool.borrow()
-            value = i
-            
-            values.append(value)
-        }
-        
-        for i in 0..<50 {
-            pool.recall(values[i])
-        }
-        
-        for _ in 0..<50 {
-            let value = pool.borrow()
-            XCTAssertNotEqual(value, defaultInt)
+        // 3. then
+        for _ in 0..<ints.count {
+            XCTAssertTrue(ints.contains(initiallyEmptyPool.borrow()), "initally empty pool contains some other values that it recalled")
         }
     }
-
-    static var allTests = [
-        ("testExample", testExample),
-    ]
+    
+    func testIfBorrowIsWorkingCorrectly() {
+        // 1. given
+        let recalledIntsCount = 50
+        let recallValue = 23
+        let initialPoolSize = 50
+        
+        // 2. when
+        for _ in 0..<recalledIntsCount {
+            initiallyFullPool.recall(recallValue)
+        }
+        
+        // 3. then
+        for _ in 0..<recalledIntsCount {
+            XCTAssertEqual(initiallyFullPool.borrow(), recallValue)
+        }
+        
+        for _ in 0..<initialPoolSize {
+            XCTAssertEqual(initiallyFullPool.borrow(), 2)
+        }
+    }
 }
+
